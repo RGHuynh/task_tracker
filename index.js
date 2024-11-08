@@ -1,6 +1,7 @@
 const { argv } = require('node:process');
 const { add } = require("./add.js");
 const { update } = require("./update.js");
+const { deleteData } = require("./delete.js");
 
 const MAIN_COMMAND_POSITION = 2
 
@@ -22,8 +23,8 @@ function getFunctionFromCommand(command) {
       return add
     case 'update':
       return update
-    // case 'delete':
-    //   return delete
+    case 'delete':
+      return deleteData
     default:
       throw new Error('Invalid command')
   }
