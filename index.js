@@ -2,6 +2,7 @@ const { argv } = require('node:process');
 const { add } = require("./add.js");
 const { update } = require("./update.js");
 const { deleteData } = require("./delete.js");
+const {markInProgress} = require("./markInProgress.js");
 
 const MAIN_COMMAND_POSITION = 2
 
@@ -25,6 +26,8 @@ function getFunctionFromCommand(command) {
       return update
     case 'delete':
       return deleteData
+    case 'mark-in-progress':
+      return markInProgress
     default:
       throw new Error('Invalid command')
   }

@@ -21,7 +21,8 @@ async function update() {
         throw new Error("index doesn't exist");
     }
 
-    JSONData[index] = argv[INCOMING_DATA]
+    JSONData[index] = {data: argv[INCOMING_DATA], status: JSONData[index].status};
+
     await fs.writeFile(SAVE_FILE_NAME, JSON.stringify(JSONData), 'utf8')
 }
 

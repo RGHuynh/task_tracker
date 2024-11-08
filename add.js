@@ -1,6 +1,6 @@
 const fs = require('node:fs/promises');
 const { argv } = require('node:process');
-const { SAVE_FILE_NAME } = require('./constants.js');
+const { SAVE_FILE_NAME, TO_DO } = require('./constants.js');
 
 const INCOMING_DATA = 3;
 
@@ -18,11 +18,11 @@ async function add() {
 
     addData = {
       ...jsonData,
-      [currentId]: incomingData
+      [currentId]: { data: incomingData, status: TO_DO }
     }
   } else {
     addData = {
-      [currentId]: incomingData
+      [currentId]: { data: incomingData, status: TO_DO }
     }
   }
 
