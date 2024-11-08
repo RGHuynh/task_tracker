@@ -1,5 +1,6 @@
 const { argv } = require('node:process');
-const { add } = require("./add.js")
+const { add } = require("./add.js");
+const { update } = require("./update.js");
 
 const MAIN_COMMAND_POSITION = 2
 
@@ -19,8 +20,8 @@ function getFunctionFromCommand(command) {
   switch (command) {
     case 'add':
       return add
-    // case 'update':
-    //   return update
+    case 'update':
+      return update
     // case 'delete':
     //   return delete
     default:

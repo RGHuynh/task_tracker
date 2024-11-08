@@ -1,13 +1,13 @@
 const fs = require('node:fs/promises');
 const { argv } = require('node:process');
+const { SAVE_FILE_NAME } = require('./constants.js');
 
 const INCOMING_DATA = 3;
-const SAVE_FILE_NAME = 'list.json';
 
 async function add() {
   const incomingData = argv[INCOMING_DATA];
   const existingFile = await getExistingFiles()
- 
+
   let currentId = 1
   let addData = {}
 
@@ -37,7 +37,6 @@ async function getExistingFiles() {
   } catch (error) {
     return null
   }
-
 }
 
 function getAvailableId(jsonData) {
