@@ -1,6 +1,7 @@
 const fs = require('node:fs/promises');
 const { argv } = require('node:process');
 const { SAVE_FILE_NAME, TO_DO } = require('./constants.js');
+const { TaskDto } = require("./task.dto.js");
 
 const INCOMING_DATA = 3;
 
@@ -18,11 +19,13 @@ async function add() {
 
     addData = {
       ...jsonData,
-      [currentId]: { data: incomingData, status: TO_DO }
+      [currentId]: new TaskDto({ id: currentId, description: incomingData, status: TO_DO })
     }
   } else {
     addData = {
-      [currentId]: { data: incomingData, status: TO_DO }
+      [currentId]: new TaskDto({
+        id: currentId, description: incomingData, status: TO_DO
+      })
     }
   }
 
