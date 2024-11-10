@@ -4,6 +4,7 @@ const { update } = require("./update.js");
 const { deleteData } = require("./delete.js");
 const { markInProgress } = require("./markInProgress.js");
 const { markIsDone } = require("./markDone.js");
+const { list } = require("./list.js");
 
 const MAIN_COMMAND_POSITION = 2
 
@@ -31,6 +32,8 @@ function getFunctionFromCommand(command) {
       return markInProgress
     case 'mark-done':
       return markIsDone
+    case 'list':
+      return list
     default:
       throw new Error('Invalid command')
   }
