@@ -12,34 +12,42 @@ async function list() {
     }
 
     const statusPosition = argv[STATUS_POSTITION];
+    
+    const JSONData = JSON.parse(existingFile);
 
     if (!statusPosition) {
-        throw new Error('Missing status postion.');
+        getList(JSONData)
+        return 
     }
-    const JSONData = JSON.parse(existingFile);
 
     switch (statusPosition) {
         case 'done':
 
-            return getList(JSONData, 'done')
+            return getListWithStatus(JSONData, 'done')
         case 'todo':
 
-            return getList(JSONData, 'todo')
+            return getListWithStatus(JSONData, 'todo')
         case 'in-progress':
 
-            return getList(JSONData, 'in-progres')
+            return getListWithStatus(JSONData, 'in-progress')
 
         default:
             throw new Error('status does not exist')
     }
 }
 
-function getList(JSONData, status) {
+function getListWithStatus(JSONData, status) {
     for (const [key, value] of Object.entries(JSONData)) {
 
         if (value.status === status) {
-            console.log(`[${key}]: ${value.data} - ${value.status}`)
+            console.log(`[${key}]: ${value.description} - ${value.status}`)
         }
+    }
+}
+
+function getList(JSONData){
+    for (const [key, value] of Object.entries(JSONData)) {
+        console.log(`[${key}]: ${value.description} - ${value.status}`)
     }
 }
 
