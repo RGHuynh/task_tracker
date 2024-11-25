@@ -31,6 +31,8 @@ async function add() {
 
   const data = JSON.stringify(addData)
   await fs.writeFile(SAVE_FILE_NAME, data, 'utf8');
+
+  console.log(`Task added successfully (ID: ${currentId})`)
 }
 
 async function getExistingFiles() {
